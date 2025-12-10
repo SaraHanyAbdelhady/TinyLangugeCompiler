@@ -6,235 +6,67 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>989</width>
-    <height>700</height>
+    <width>736</width>
+    <height>437</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Tiny Language Compiler</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2,2">
-    <item alignment="Qt::AlignmentFlag::AlignLeft">
-     <widget class="QFrame" name="frame1">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>678</height>
-       </size>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::LayoutDirection::RightToLeft</enum>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Shadow::Raised</enum>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <widget class="QPushButton" name="frame1button">
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
-    background-color: cyan;
-    color: black;
-    border: 1px solid darkblue
-}
-
-/* For hover effect */
-QPushButton:hover {
-    background-color: lightcyan;
-}
-
-/* For pressed state */
-QPushButton:pressed {
-    background-color: darkcyan;
-}</string>
-         </property>
-         <property name="text">
-          <string>Import File</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QFrame" name="frame11">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>625</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::Shape::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Shadow::Raised</enum>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_4">
-          <item>
-           <widget class="QLabel" name="label">
-            <property name="text">
-             <string>Type Your Code </string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QTextEdit" name="textEdit">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>574</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
     <item>
-     <widget class="QFrame" name="frame2">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>678</height>
-       </size>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Shadow::Raised</enum>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_5">
-       <item>
-        <widget class="QPushButton" name="frame2button">
-         <property name="layoutDirection">
-          <enum>Qt::LayoutDirection::LeftToRight</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
-    background-color: cyan;
-    color: black;
-    border: 1px solid darkblue
-}
-
-/* For hover effect */
-QPushButton:hover {
-    background-color: lightcyan;
-}
-
-/* For pressed state */
-QPushButton:pressed {
-    background-color: darkcyan;
-}</string>
-         </property>
-         <property name="text">
-          <string>View Scanner Output</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QFrame" name="frame21">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>625</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::Shape::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Shadow::Raised</enum>
-         </property>
-         <widget class="QLabel" name="textLabel">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>60</y>
-            <width>321</width>
-            <height>541</height>
-           </rect>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>541</height>
-           </size>
-          </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QPushButton" name="frame1button">
           <property name="text">
-           <string>Scanner Output</string>
+           <string>Import File</string>
           </property>
          </widget>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item>
-     <widget class="QFrame" name="frame3">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>678</height>
-       </size>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::LayoutDirection::RightToLeft</enum>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Shadow::Raised</enum>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_6">
-       <item>
-        <widget class="QPushButton" name="frame3button">
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
-    background-color: cyan;
-    color: black;
-    border: 1px solid darkblue
-}
-
-/* For hover effect */
-QPushButton:hover {
-    background-color: lightcyan;
-}
-
-/* For pressed state */
-QPushButton:pressed {
-    background-color: darkcyan;
-}</string>
-         </property>
-         <property name="text">
-          <string>View Parser Output</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QFrame" name="frame31">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>625</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::Shape::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Shadow::Raised</enum>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="frame2button">
+          <property name="text">
+           <string>Scan the Code</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="frame3button">
+          <property name="text">
+           <string>Parse the Code</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="treebutton">
+          <property name="text">
+           <string>Show Syntax Tree</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="0">
+       <widget class="QTextEdit" name="textEdit">
+        <property name="documentTitle">
+         <string>Enter your Code here</string>
+        </property>
+        <property name="placeholderText">
+         <string>Enter your Code here</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QTextEdit" name="textEdit_2">
+        <property name="placeholderText">
+         <string>Output will appear here</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>

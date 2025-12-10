@@ -2,8 +2,8 @@
 
 #include <vector>
 #include <string>
-#include "../Scanner/Scanner.h"
-#include "../ASTNode/ASTNode.h"
+#include "Scanner.h"
+#include "ASTNode.h"
 
 class Parser {
 private:

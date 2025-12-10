@@ -10,14 +10,16 @@ Parser::Parser(std::vector<Token> t) {
 
 
 Token Parser::currentToken() {
-    if (currentIndex >= tokens.size())
+    int i = tokens.size();
+    if (currentIndex >= i)
         return {TokenType::ENDFILE, "EOF"};
     return tokens[currentIndex];
 }
 
 
 void Parser::advance() {
-    if (currentIndex < tokens.size())
+    int i = tokens.size();
+    if (currentIndex < i)
         currentIndex++;
 }
 

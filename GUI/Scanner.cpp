@@ -136,7 +136,6 @@ vector<Token>scan(const string &sourceCode)
         else if (isalpha(currentChar))
         {
             currentLexeme = "";
-            int startPos = i; // Save start position
 
             while (i < n && isalpha(sourceCode[i]))
             {

@@ -15,8 +15,17 @@
 #include <QString>
 #include <vector>
 #include <string>
+#include <QDialog>
+#include <QVBoxLayout>
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QGraphicsRectItem>
+#include <QGraphicsEllipseItem>
+#include <QGraphicsLineItem>
 
 #include "Scanner.h"
+#include "ASTNode.h"
+#include "parser.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -31,6 +40,11 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void printASTToText(ASTNode*, QString&, int);
+    bool isStatement(const std::string&);
+    void categorizeChildren(ASTNode*, std::vector<ASTNode*>&, ASTNode*&);
+    int getSize(ASTNode* node);
+    void drawTreeRecursive(QGraphicsScene*, ASTNode*, int, int);
 
 private slots:
     void on_frame1button_clicked();
@@ -38,6 +52,8 @@ private slots:
     void on_frame2button_clicked();
 
     void on_frame3button_clicked();
+
+    void on_treebutton_clicked();
 
 private:
     Ui::MainWindow *ui;
