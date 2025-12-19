@@ -16,6 +16,35 @@ Token Parser::currentToken() {
     return tokens[currentIndex];
 }
 
+Token Parser::peekNext() {
+    if (currentIndex + 1 >= tokens.size())
+        return {TokenType::ENDFILE, "EOF"};
+    return tokens[currentIndex + 1];
+}
+
+void Parser::validateSequence() {
+    // We loop until size() - 1 because we are looking at i and i + 1
+    for (size_t i = 0; i + 1 < tokens.size(); ++i) {
+        Token current = tokens[i];
+        Token next = tokens[i + 1];
+
+        // Check for ID followed by NUMBER (e.g., "min" then "123")
+        if (current.type == TokenType::ID && next.type == TokenType::NUMBER) {
+            throw std::runtime_error(
+                "Syntax Error: Consecutive tokens mismatch. Identifier '" +
+                current.lexeme + "' followed by Number '" + next.lexeme + "'"
+                );
+        }
+
+        // Check for IF followed by ELSE
+        if (current.type == TokenType::IF && next.type == TokenType::ELSE) {
+            throw std::runtime_error(
+                "Syntax Error: Forbidden sequence 'if' immediately followed by 'else'."
+                );
+        }
+
+    }
+}
 
 void Parser::advance() {
     int i = tokens.size();
@@ -176,12 +205,8 @@ ASTNode* Parser::writeStmt() {
     return writeNode;
 }
 
-
-
-
-
-// statement → if-stmt | repeat-stmt | assign-stmt | read-stmt | write-stmt
 ASTNode* Parser::statement() {
+
     Token t = currentToken();
 
     switch (t.type) {
@@ -273,9 +298,10 @@ ASTNode* Parser::simpleExp() {
 }
 
 
-
 // ======== parse() =========
 ASTNode* Parser::parse() {
+    // Add the check here
+    validateSequence();
     return program();
 }
 

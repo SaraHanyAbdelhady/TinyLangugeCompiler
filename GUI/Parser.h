@@ -13,6 +13,8 @@ private:
     Token currentToken();
     void advance();
     void expect(TokenType type);
+    Token peekNext();
+    void validateSequence();
 
     // ===== Grammar methods =====
     ASTNode* program();

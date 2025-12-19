@@ -214,6 +214,7 @@ bool MainWindow::isStatement(const std::string& type) {
             type == "read" || type == "write");
 }
 
+// Corrected helper to distinguish "Else" (Vertical) from "Next Statement" (Horizontal)
 void MainWindow::categorizeChildren(ASTNode* parent, std::vector<ASTNode*>& vertical, ASTNode*& horizontal) {
     horizontal = nullptr;
     vertical.clear();
@@ -222,9 +223,18 @@ void MainWindow::categorizeChildren(ASTNode* parent, std::vector<ASTNode*>& vert
 
     // 1. IF Statement: [Cond, Then, (Else), (Next)]
     if (parent->type == "if") {
+        // Child 0: Condition (Vertical)
+        // Child 1: Then-Part (Vertical)
+        // Child 2: Else-Part (Vertical) <-- This is the specific fix
+        // Child 3: Next Statement (Horizontal)
+
         for (size_t i = 0; i < parent->children.size(); ++i) {
             ASTNode* child = parent->children[i];
-            if (i == parent->children.size() - 1 && i >= 2 && isStatement(child->type)) {
+
+            // Only treat the child as "Horizontal" (Next Stmt) if it is the
+            // 4th child (index 3) or later.
+            // This ensures the 3rd child (Index 2, the ELSE part) remains Vertical.
+            if (i >= 3 &&  isStatement(child->type)) {
                 horizontal = child;
             } else {
                 vertical.push_back(child);
@@ -234,25 +244,24 @@ void MainWindow::categorizeChildren(ASTNode* parent, std::vector<ASTNode*>& vert
     // 2. REPEAT Statement: [Body, Cond, (Next)]
     else if (parent->type == "repeat") {
         if (parent->children.size() > 0) vertical.push_back(parent->children[0]); // Body
-        if (parent->children.size() > 1) vertical.push_back(parent->children[1]); // Condition
+        if (parent->children.size() > 1) vertical.push_back(parent->children[1]); // Cond (Until)
         if (parent->children.size() > 2) horizontal = parent->children[2];         // Next Stmt
     }
-    // 3. General Statements (Assign, Read, Write)
+    // 3. Simple Statements (Assign, Read, Write)
     else if (isStatement(parent->type)) {
         for (ASTNode* child : parent->children) {
             if (isStatement(child->type)) {
-                horizontal = child; // Next Statement
+                horizontal = child; // The chained statement
             } else {
-                vertical.push_back(child); // Expressions
+                vertical.push_back(child); // Expressions/IDs
             }
         }
     }
-    // 4. Expressions / Ops
+    // 4. Expressions / Ops (Everything vertical)
     else {
         vertical = parent->children;
     }
 }
-
 int MainWindow::getSize(ASTNode* node) {
     if (!node) return 0;
 
